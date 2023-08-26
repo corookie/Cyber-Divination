@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father{
+            width: 100%;
+            flex-wrap: wrap;
+            display: flex;
+
+        }
+
+        .father .son{
+            width: 200px;
+            height: 100px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            flex-grow: 1;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+    </div>
+
+    <script>
+        function deepClone(obj,map = new WeakMap()){
+    if(obj === null || typeof obj !== 'object'){
+        return obj
+    }
+    if(map.has(obj)){
+        return map.get(obj)
+    }
+
+    let res;
+    if( obj instanceof Array ){
+        res = []
+    }
+    if( obj instanceof Object){
+        res = {}
+    }
+
+    map.set(obj,res);
+
+    for(let key in obj){
+        if(Object.prototype.hasOwnProperty.call(obj,key)){
+                res[key] = deepClone(obj[key],map)
+        }
+    }
+    return res
+}
+
+let a = {
+    'a':1,
+    'b':2,
+    'c' : {
+        'd' : 4,
+        'e' : 5,
+        'f' : 6
+    },
+    'd' : {
+        'g' : 23
+    }
+}
+let b = deepClone(a)
+
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<template>
+    <div class="contain">
+        <div class="apFont">打字机特效</div>
+        <div class="star">
+            <button @click="jumpChat">开始卜卦</button>
+        </div>
+        <test></test>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import { ref ,reactive,onMounted} from "vue" 
+import router from "../router";
+import test from "./test.vue";
+// import { ElButton } from "element-plus";
+
+const jumpChat = function(){
+    router.push({
+        name:'Chat'
+    })
+}
+
+const word:any = reactive({
+    1:{omen:'上上签',describe:'困龙得水，喜上眉梢'},
+    3:{omen:'中下签',describe:'前路有险，守正待机'},
+    4:{omen:'中中签',describe:'泰极否来，否极泰来'},
+    5:{omen:'中上签',describe:'观时待变，所到功成'},
+    6:{omen:'上上签',describe:'顺应天时，大吉大利'},
+    7:{omen:'下下签',describe:'旱情焦梢，蓄养待进'},
+    8:{omen:'中下签',describe:'福祸相依，行险而顺'},
+    9:{omen:'中中签',describe:'谦虚谨慎，谋望随心'},
+    10:{omen:'中上签',describe:'诚信团结，化凶为吉'},
+    11:{omen:'上上签',describe:'相亲相辅，蓄养精进'},
+    12:{omen:'下下签',describe:'宜本分，不可妄行'},
+    13:{omen:'中下签',describe:'小人得势，君子困顿'},
+    14:{omen:'中中签',describe:'逢大变，当顺时依势'},
+    15:{omen:'中上签',describe:'脚踏实地，各得其利'},
+    16:{omen:'上上签',describe:'恰逢其会，忧愁去矣'},
+    17:{omen:'下下签',describe:'宜本分，不可妄行'},
+    18:{omen:'中下签',describe:'坚守正道，韬光养晦'},
+    19:{omen:'中中签',describe:'锐意革新，振新大业'},
+    20:{omen:'中上签',describe:'顺天意，上下和同'},
+})
+onMounted(() => {
+    // console.log(1222,JSON.stringify(word));
+})
+</script>  
+
+<style lang="less" scoped>
+
+</style>
